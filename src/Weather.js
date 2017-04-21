@@ -3,11 +3,12 @@ import React, { Component } from 'react';
 
 
 
-class WeatherValuesComponent extends Component 
+class Weather extends Component 
 {
   render() 
   {
-  	var mapping = this.props.weather.map(function(data) {
+  	var mapping = this.props.weather.map(function(data) 
+  	{
 			return(
 					<tr><td>{data.dt_txt}</td><td>{data.main.temp}</td><td>{data.main.pressure}</td><td>{data.main.humidity}</td><td>{data.main.temp_min}</td><td>{data.main.temp_max}</td></tr>
 					
@@ -43,4 +44,4 @@ class WeatherValuesComponent extends Component
   }
 }
 
-export default WeatherValuesComponent;
+export default Weather;

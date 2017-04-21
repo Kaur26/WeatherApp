@@ -1,7 +1,7 @@
-A simple weather app made using React and Open Weather Map API displaying the 5 day weather forecast for a location of your choice.
+Weather Forecast App made using React and Open Weather Map API.
 
 Setup
 
-Install dependencies. npm install
+npm install
 
-Start localhost server. npm start
+npm start

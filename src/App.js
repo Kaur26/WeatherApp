@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import $ from 'jquery';
-import WeatherValuesComponent from './WeatherValuesComponent.js';
+import Weather from './Weather.js';
 
 
 class App extends Component 
@@ -10,15 +10,15 @@ class App extends Component
   {
     super();
     this.state={"name":"","weather":[],"tb":false};
-    this.handleChange=this.handleChange.bind(this);
-    this.fetchWeatherValue=this.fetchWeatherValue.bind(this);
+    this.change=this.change.bind(this);
+    this.fetchValue=this.fetchValue.bind(this);
   }
 
-  handleChange(e)
+  change(e)
   {
     this.setState({name: e.target.value});
   }
-  fetchWeatherValue(cityname) 
+  fetchValue(cityname) 
   {
     console.log(cityname);
     this.setState({tb: true});
@@ -29,11 +29,14 @@ class App extends Component
     crossDomain: true,
     dataType: 'JSON',
 
-    success : function(msg){
+    success : function(msg)
+    {
+
     console.log(msg.list);
     this.setState({weather:msg.list});
     }.bind(this),
-    error: function(err){
+    error: function(err)
+    {
     console.log("Main-Error Fetching ");
     }
     });
@@ -41,11 +44,11 @@ class App extends Component
   render() {
     return (
       <div className="App">
-      <h1>Weather Forecast</h1>
-        <input type="text" value={this.state.name} onChange={this.handleChange}/>
+      <h1>Weather App</h1>
+        <input type="text" value={this.state.name} onChange={this.change}/>
         
-        <button type="submit" onClick={() => {this.fetchWeatherValue(this.state.name)}}>Search</button>
-        <WeatherValuesComponent weather={this.state.weather} tb={this.state.tb}/>
+        <button type="submit" onClick={() => {this.fetchValue(this.state.name)}}>Search</button>
+        <Weather weather={this.state.weather} tb={this.state.tb}/>
       </div>
     );
   }
